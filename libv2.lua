@@ -379,14 +379,10 @@ local defaults; do
             local callback     = callback or function() end;
             local default      = options.default;
 
-            local passed = true;
-            if keyboardOnly and (tostring(default):find('MouseButton')) then 
-                passed = false 
+            if keyboardOnly and (not tostring(default):find('MouseButton')) then
+                location[flag] = default
             end
-            if passed then 
-               location[flag] = default 
-            end
-           
+            
             local banned = {
                 Return = true;
                 Space = true;
@@ -1014,7 +1010,7 @@ local defaults; do
         topcolor       = Color3.fromRGB(30, 30, 30);
         titlecolor     = Color3.fromRGB(255, 255, 255);
         
-        underlinecolor = Color3.fromRGB(0, 255, 140);
+        underlinecolor = "rainbow";
         bgcolor        = Color3.fromRGB(35, 35, 35);
         boxcolor       = Color3.fromRGB(35, 35, 35);
         btncolor       = Color3.fromRGB(25, 25, 25);
